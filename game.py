@@ -4,12 +4,18 @@ import keyboard
 import os
 import json
 
+
+def cls():
+    os.system('cls' if os.name=='nt' else 'clear')
+
+
 class Menu:
     def __init__(self):
         self.options = ["Play", "Settings", "Exit"]
         self.selected = 0
 
     def draw(self):
+        cls()
         print("Minesweeper")
         for i in range(len(self.options)):
             if i == self.selected:
@@ -33,12 +39,14 @@ class Menu:
         elif self.selected == 2:
             return "exit"
 
+
 class Settings:
     def __init__(self):
         self.options = ["Assets", "Back"]
         self.selected = 0
 
     def draw(self):
+        cls()
         print("Settings")
         for i in range(len(self.options)):
             if i == self.selected:
@@ -60,6 +68,7 @@ class Settings:
         elif self.selected == 1:
             return "back"
 
+
 class Assets:
     def __init__(self):
         list_of_packs = os.listdir("assets")
@@ -68,6 +77,7 @@ class Assets:
         self.selected = 0
 
     def draw(self):
+        cls()
         print("Assets")
         for i in range(len(self.options)):
             if i == self.selected:
@@ -89,6 +99,3 @@ class Assets:
         else:
             assets.load_assets(self.options[self.selected])
             return "load"
-
-Assets = Assets()
-Assets.draw()
