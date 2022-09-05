@@ -70,11 +70,13 @@ class Settings:
 
     def select(self):
         if self.selected == 0:
-          
+            global menu
+            menu = Assets()
             return "assets"
         elif self.selected == 1:
-           
-            return "back"
+            global menu
+            menu = Menu()
+            return "menu"
 
 
 class Assets:
@@ -103,10 +105,16 @@ class Assets:
 
     def select(self):
         if self.selected == 0:
-            return "back"
+            global menu
+            menu = Settings()
+            menu.draw()
+            return "settings"
         else:
-            assets.load_assets(self.options[self.selected])
-            return "load"
+            assets.load_assets("assets/" + self.options[self.selected])
+            global menu
+            menu = Settings()
+            menu.draw()
+            return "settings"
 
 menu = Menu()
 menu.draw()
@@ -116,6 +124,12 @@ while True:
         menu.draw()
     if keyboard.read_key() == "s":
         menu.move("down")
+        menu.draw()
+    if keyboard.read_key() == "d":
+        menu.move("right")
+        menu.draw()
+    if keyboard.read_key() == "a":
+        menu.move("left")
         menu.draw()
     if keyboard.read_key() == "enter":
         menu.select()
