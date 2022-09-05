@@ -1,12 +1,15 @@
+import sys
 import minesweeper_assets_manager as assets
 import random
 import keyboard
 import os
 import json
 
+menu = True
+
 
 def cls():
-    os.system('cls' if os.name=='nt' else 'clear')
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 
 class Menu:
@@ -35,8 +38,11 @@ class Menu:
         if self.selected == 0:
             return "play"
         elif self.selected == 1:
+            global menu
+            menu = Settings()
             return "settings"
         elif self.selected == 2:
+            sys.exit()
             return "exit"
 
 
@@ -64,8 +70,10 @@ class Settings:
 
     def select(self):
         if self.selected == 0:
+          
             return "assets"
         elif self.selected == 1:
+           
             return "back"
 
 
@@ -99,3 +107,16 @@ class Assets:
         else:
             assets.load_assets(self.options[self.selected])
             return "load"
+
+menu = Menu()
+menu.draw()
+while True:
+    if keyboard.read_key() == "w":
+        menu.move("up")
+        menu.draw()
+    if keyboard.read_key() == "s":
+        menu.move("down")
+        menu.draw()
+    if keyboard.read_key() == "enter":
+        menu.select()
+        menu.draw()

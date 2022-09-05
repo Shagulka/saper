@@ -3,6 +3,7 @@ import json
 flag = "🚩"
 mine = "💣"
 empty = "⬜"
+selected = "🔳"
 one = "1️⃣"
 two = "2️⃣"
 three = "3️⃣"
