@@ -231,7 +231,7 @@ class Game:
                     elif self.true_board[i][j] == 0:
                         print(assets.get_asset("empty"), end="")
                     else:
-                        print(assets.get_asset(str(self.true_board[i][j])), end=" ")
+                        print(assets.get_asset(str(self.true_board[i][j])), end="")
                 elif self.player_board[i][j] == 2:
                     print(assets.get_asset("flag"), end="")
             print()
